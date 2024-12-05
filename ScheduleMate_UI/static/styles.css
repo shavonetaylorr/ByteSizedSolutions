@@ -1,0 +1,553 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100vh; /* Ensure full height for sticky footer */
+    margin: 0; /* Remove default browser margins */
+    display: flex;
+    flex-direction: column; /* Make the body a column layout */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #f8f9fa;
+    color: #003667;
+    line-height: 1.5;
+     /* justify-content: space-between; */
+}
+
+/* Ensure main content pushes footer to the bottom */
+main {
+    flex: 1; /* This makes the main section grow to fill available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
+/* Header Styling */
+header {
+    background-color: #e9ecef;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px; /* Adjust the height to fit your header */
+    width: auto; /* Maintain aspect ratio */
+    display: block; 
+}
+
+.logo {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Vertically center items */
+    gap: 10px; /* Add some space between the image and text */
+    font-weight: bold;
+    font-size: 1.5em; 
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 40px; /* Smaller height for mobile */
+    }
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+}
+
+.top-nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+/* Button Styling */
+button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    background-color:  #8FC3E9; /* #007bff; */
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+
+    
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.sign-in-btn, .register-btn {
+    /* background-color: #6c757d; */
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.sign-in-btn:hover, .register-btn:hover {
+    background-color: #0056b3;
+}
+
+
+/*checkbox copy paste*/
+.checkbox-wrapper-20 {
+    --slider-height: 8px;
+    --slider-width: calc(var(--slider-height) * 4);
+    --switch-height: calc(var(--slider-height) * 3);
+    --switch-width: var(--switch-height);
+    --switch-shift: var(--slider-height);
+    --transition: all 0.2s ease;
+
+    --switch-on-color: #ef0460;
+    --slider-on-color: #fc5d9b;
+
+    --switch-off-color: #eeeeee;
+    --slider-off-color: #c5c5c5;
+  }
+
+  .checkbox-wrapper-20 .switch {
+    display: block;
+  }
+    
+  .checkbox-wrapper-20 .switch .slider {
+    position: relative;
+    display: inline-block;
+    height: var(--slider-height);
+    width: var(--slider-width);
+    border-radius: var(--slider-height);
+    cursor: pointer;
+    background: var(--slider-off-color);
+    transition: var(--transition);
+  }
+  
+  .checkbox-wrapper-20 .switch .slider:after {
+    background: var(--switch-off-color);
+    position: absolute;
+    left: calc(-1 * var(--switch-shift));
+    top: calc((var(--slider-height) - var(--switch-height)) / 2);
+    display: block;
+    width: var(--switch-height);
+    height: var(--switch-width);
+    border-radius: 50%;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, .2);
+    content: '';
+    transition: var(--transition);
+  }
+    
+  .checkbox-wrapper-20 .switch label {
+    margin-right: 7px;
+  }
+    
+  .checkbox-wrapper-20 .switch .input {
+    display: none;
+  }
+      
+  .checkbox-wrapper-20 .switch .input ~ .label {
+    margin-left: var(--slider-height);
+  }
+         
+  .checkbox-wrapper-20 .switch .input:checked ~ .slider:after {
+    left: calc(var(--slider-width) - var(--switch-width) + var(--switch-shift));
+  }
+    
+  .checkbox-wrapper-20 .switch .input:checked ~ .slider {
+    background: var(--slider-on-color);
+  }
+
+  .checkbox-wrapper-20 .switch .input:checked ~ .slider:after {
+    background: var(--switch-on-color);
+  }
+
+/* Dashboard Layout */
+.dashboard-container {
+    display: flex;
+    margin: 20px;
+}
+
+.filters {
+    background-color: #dee2e6;
+    padding: 15px;
+    width: 20%;
+    border-radius: 8px;
+}
+
+.filters h3 {
+    margin-bottom: 15px;
+}
+
+.filters label {
+    display: block;
+    margin: 10px 0;
+} 
+/* i just added this below */
+.filters .filter-item {
+    display: flex;
+    align-items: center; /* Align text and toggle vertically */
+    margin-bottom: 15px; /* Add spacing between items */
+}
+
+.filters .filter-item .switch {
+    margin-right: 10px; /* Add space between the toggle and the text */
+}
+/* end of addition of code */
+
+.dashboard-content {
+    width: 75%;
+    margin-left: 20px;
+}
+
+.quick-action-menu,
+.calendar-view {
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.calendar-cell {
+    height: 100px;
+    background-color: #dee2e6;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ced4da;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #f8f9fa;
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #e0e0e0;
+    position: relative; /* Ensure it stays at the bottom of the layout */
+    width: 100%; /* Full width of the footer */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+}
+
+.footer-links a,
+.footer-socials a {
+    margin: 0 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover,
+.footer-socials a:hover {
+    text-decoration: underline;
+}
+
+.footer-info p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive Footer Styling */
+@media (max-width: 768px) {
+    .checkbox-wrapper-20 {
+        margin-bottom: 10px;
+        width: 100%; /* Full width for smaller screens */
+    }
+    .checkbox-wrapper-20 .switch {
+        display: flex;
+        justify-content: space-between;
+    }
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-links a,
+    .footer-socials a {
+        display: block;
+        margin: 5px 0;
+    }
+
+}
+
+
+/* Main Content Area */
+.container {
+    flex: 1; /* Pushes the footer to the bottom */
+    display: flex;
+    /*flex-direction: column;
+    justify-content: center; /* Center align content vertically if it's short */
+    /*align-items: center; /* Center align content horizontally */
+} 
+
+/* Ambassador Availability Page */
+/* Toggle styling for the quick action area "edit availability" */
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.toggle-wrapper .switch .slider {
+    background: var(--slider-off-color);
+    transition: all 0.3s ease;
+}
+
+/* Manage Tours Page */
+.manage-tours-container {
+    margin: 20px;
+    padding: 20px;
+}
+
+.manage-tours-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.tour-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Available Ambassadors List */
+.ambassador-list {
+    width: 25%;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ambassador-list h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.ambassador-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.ambassador-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #dee2e6;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: grab;
+}
+
+.ambassador-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: #3d607f;
+}
+
+.ambassador-name {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Tour Slots Section */
+.tour-slots {
+    width: 70%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tour-slots h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.instruction {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    color: #6c757d;
+}
+
+.slots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.tour-slot {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tour-info {
+    font-size: 1.2rem;
+    color: #007bff;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.tour-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.tour-details {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.reports-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.generate-report-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    font-size: 1rem;
+}
+
+.report-display-area {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+}
+
+
+/* Notification Boxes */
+.notifications-list {
+    /* justify-content: center; Center horizontally */
+    height: 100vh; /* Full viewport height */
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px 15px 0px 100px;
+}
+
+.notification-box {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.notification-content {
+    margin-bottom: 15px;
+}
+
+.notification-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #003667;
+}
+
+.notification-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Button Styling */
+.btn {
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+}
+
+.green-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.green-btn:hover {
+    background-color: #218838;
+}
+
+.red-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.red-btn:hover {
+    background-color: #c82333;
+}
+
+.action-btn {
+    padding: 8px 16px;
+    margin: 5px 5px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.action-btn:hover {
+    background-color: #0056b3;
+}
+
+.filter-controls {
+    padding-left: 1px ;
+    padding-right: 1px ;
+    /* flex-direction: column; */
+
+}
+
+.notifications-header {
+    padding: 20px 10px;
+    width: 16%;
+    flex-direction: column
+}
+
+.notifications-header h2 {
+    margin-bottom: 15px;
+}

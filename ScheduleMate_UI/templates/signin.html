@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | ScheduleMate</title>
+    <link rel="stylesheet" href="../static/styles.css"> <!-- Link to your CSS -->
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="../static/assets/schedulemate-logo.png" alt="ScheduleMate Logo">
+            <p>ScheduleMate</p>
+        </div>
+        <nav class="top-nav">
+            <a href="../templates/dashboard.html">Dashboard</a>
+            <a href="../templates/manage-tours.html">Manage Tours</a>
+            <a href="../templates/AmbassadorAvailability.html">Ambassador Availability</a>
+            <a href="../templates/reports.html">Reports</a>
+            <a href="../templates/notifications.html">Notifications</a>
+        </nav>
+    </header>
+
+    <!-- Sign In Form -->
+    <main class="sign-in-container">
+        <div class="sign-in-box">
+            <h1>Sign In</h1>
+            <p>Welcome back! Please sign in to access your account.</p>
+            
+            <form action="/process-login" method="POST">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember">
+                        Remember Me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn-primary">Sign In</button>
+            </form>
+
+            <p class="sign-up-prompt">
+                Don't have an account? <button class="register-btn"><a href="register.html">Register here</a></button>
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>© 2024 ScheduleMate. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-socials">
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
