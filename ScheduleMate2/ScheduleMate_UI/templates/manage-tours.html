@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Tours - ScheduleMate</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="../static/assets/schedulemate-logo.png" alt="ScheduleMate Logo">
+            <p>ScheduleMate</p>
+        </div>
+        <nav class="top-nav">
+            <a href="../templates/dashboard.html">Dashboard</a>
+            <a href="../templates/manage-tours.html" class="active">Manage Tours</a>
+            <a href="../templates/AmbassadorAvailability.html">Ambassador Availability</a>
+            <a href="../templates/reports.html">Reports</a>
+            <a href="../templates/notifications.html">Notifications</a>
+
+            <button class="sign-in-btn">
+                <a href="signin.html" style="color: white; text-decoration: none; "> Sign in </a>
+            </button>
+            <button class="register-btn">Register</button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="manage-tours-container">
+        <div class= "container">
+            <h1>Tour Manager</h1>
+            
+            <div class="tour-content">
+               
+                <!-- Scheduled Ambassadors Section -->
+                <section class="ambassador-list" id="scheduledAmbassadorsSection" style="display: none;">
+                    <h3>Scheduled Ambassadors List</h3>
+                    <ul id="scheduledAmbassadorList">
+                        <!-- The scheduled ambassadors will be dynamically inserted here -->
+                    </ul>
+                    <button class="close-btn">Close</button>
+                </section>
+
+
+                <!-- Available Ambassadors List Section -->
+                <section class="ambassador-list" id="availableAmbassadorsSection" style="display: none;">
+                    <h3>Available Ambassadors List</h3> 
+                    <ul id = "availableAmbassadorList">
+                        <!-- The available ambassadors will be dynamically inserted here -->
+                    </ul>
+                    <button class="close-btn">Close</button>
+                </section>
+
+                <!-- Tour Slots -->
+                <section class="tour-slots">
+                    <h3>Upcoming Tour Slots</h3>
+                    <div class="weekday-row">
+                        <div class="weekday-slot" id="monday">
+                            <h4>Monday</h4>
+                            <div class="tours-container"></div>
+                        </div>
+                        <div class="weekday-slot" id="tuesday">
+                            <h4>Tuesday</h4>
+                            <div class="tours-container"></div>
+                        </div>
+                        <div class="weekday-slot" id="wednesday">
+                            <h4>Wednesday</h4>
+                            <div class="tours-container"></div>
+                        </div>
+                        <div class="weekday-slot" id="thursday">
+                            <h4>Thursday</h4>
+                            <div class="tours-container"></div>
+                        </div>
+                        <div class="weekday-slot" id="friday">
+                            <h4>Friday</h4>
+                            <div class="tours-container"></div>
+                        </div>
+                        <div class="weekday-slot" id="saturday">
+                            <h4>Saturday</h4>
+                            <div class="tours-container"></div>
+                        </div>
+                    </div>
+                </section>               
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>© 2024 ScheduleMate. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-socials">
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer -->
+    <!-- <footer>
+        <div class="footer-container">
+            <div>&copy; 2024 ScheduleMate. All rights reserved.</div>
+            <div class="footer-links">
+                <a href="#">Contact Us</a> 
+                <a href="#">Privacy Policy</a> 
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-socials">
+                <a href="#" title="Follow us on LinkedIn">LinkedIn</a>  
+                <a href="#" title="Follow us on Github">Github</a>
+            </div>
+        </div>
+    </footer> -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let selectedTourId = null; // Variable to store the selected tour ID
+
+            // Fetch and display tours
+            fetch("../utils/managetours.php")
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Tours Data:", data); // Verify the data structure
+                    displayTours(data); // Populate the tours
+                })
+                .catch(error => console.error("Error fetching tours:", error));
+
+            function displayTours(tours) {
+                const weekdayContainers = {
+                    monday: document.getElementById("monday").querySelector(".tours-container"),
+                    tuesday: document.getElementById("tuesday").querySelector(".tours-container"),
+                    wednesday: document.getElementById("wednesday").querySelector(".tours-container"),
+                    thursday: document.getElementById("thursday").querySelector(".tours-container"),
+                    friday: document.getElementById("friday").querySelector(".tours-container"),
+                    saturday: document.getElementById("saturday").querySelector(".tours-container"),
+                };
+
+                // Clear existing tours
+                Object.values(weekdayContainers).forEach(container => (container.innerHTML = ""));
+
+                tours.forEach(tour => {
+                    const tourDiv = document.createElement("div");
+                    tourDiv.classList.add("tour-slot");
+                    tourDiv.dataset.tourId = tour.tour_id; // Store tour ID
+                    tourDiv.innerHTML = `
+                        <span class="tour-title">${tour.tour_type}</span>
+                        <p class="tour-details">${tour.weekday}, ${convertTo12HourFormat(tour.start_time)} - ${convertTo12HourFormat(tour.end_time)}</p>
+                    `;
+
+                    // Highlight and store selected tour ID when clicked
+                    tourDiv.addEventListener("click", function () {
+                        // Remove 'selected' class from other tours
+                        document.querySelectorAll(".tour-slot").forEach(slot => slot.classList.remove("selected-tour"));
+
+                        // Add 'selected-tour' class to the clicked tour
+                        tourDiv.classList.add("selected-tour");
+
+                        // Log to check if class was added
+                        console.log(tourDiv.classList); // This will show the classes on the clicked element
+
+                        selectedTourId = tour.tour_id; // Store the selected tour ID
+                        console.log(`Selected Tour ID: ${selectedTourId}`); // Debugging
+
+                        // Display both lists for the selected tour
+                        showAssignedAmbassadors(selectedTourId);
+                        showAvailableAmbassadors(selectedTourId);
+
+                        // Make both sections visible
+                        document.getElementById("scheduledAmbassadorsSection").style.display = "block";
+                        document.getElementById("availableAmbassadorsSection").style.display = "block";
+                    });
+
+                    const weekday = tour.weekday.toLowerCase();
+                    if (weekdayContainers[weekday]) {
+                        weekdayContainers[weekday].appendChild(tourDiv);
+                    }
+
+                });
+            }
+
+            function showAssignedAmbassadors(tourId) {
+                fetch(`../utils/assignments.php?tour_id=${tourId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("Assigned Ambassadors:", data); // Debugging
+                        displayScheduledAmbassadors(data);
+                    })
+                    .catch(error => console.error("Error fetching assigned ambassadors:", error));
+            }
+
+            function displayScheduledAmbassadors(data) {
+                const section = document.getElementById("scheduledAmbassadorsSection");
+                const ambassadorList = document.getElementById("scheduledAmbassadorList");
+
+                ambassadorList.innerHTML = ""; // Clear previous details
+
+                if (data.length > 0) {
+                    data.forEach(ambassador => {
+                        const ambassadorItem = document.createElement("li");
+                        ambassadorItem.innerHTML = `
+                            <span class="ambassador-icon">👤</span>
+                            <span class="ambassador-name">${ambassador.name}</span>
+                            <span class="ambassador-role" style="margin-left: auto; font-size: 0.9rem; color: #555;">(${ambassador.role_name})</span>
+                        `;
+                        ambassadorList.appendChild(ambassadorItem);
+                    });
+                } else {
+                    ambassadorList.innerHTML = "<li>No ambassadors assigned to this tour.</li>";
+                }
+            }
+
+            function showAvailableAmbassadors(tourId) {
+                fetch(`../utils/availableambassadors.php?tour_id=${tourId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("Available Ambassadors:", data); // Debugging
+                        displayAvailableAmbassadors(data);
+                    })
+                    .catch(error => console.error("Error fetching available ambassadors:", error));
+            }
+
+            function displayAvailableAmbassadors(ambassadors) {
+                const ambassadorList = document.getElementById("availableAmbassadorList");
+                ambassadorList.innerHTML = ""; // Clear previous list
+
+                if (ambassadors.length > 0) {
+                    ambassadors.forEach(ambassador => {
+                        const ambassadorItem = document.createElement("li");
+                        ambassadorItem.innerHTML = `
+                            <span class="ambassador-icon">👤</span>
+                            <span class="ambassador-name">${ambassador.name}</span>
+                        `;
+                        ambassadorList.appendChild(ambassadorItem);
+                    });
+                } else {
+                    ambassadorList.innerHTML = "<li>No available ambassadors for this tour.</li>";
+                }
+            }
+
+            // Close both lists when the "Close" button is clicked
+            document.querySelectorAll(".close-btn").forEach(button => {
+                button.addEventListener("click", function () {
+                    document.getElementById("scheduledAmbassadorsSection").style.display = "none";
+                    document.getElementById("availableAmbassadorsSection").style.display = "none";
+                });
+            });
+
+            // Utility: Convert time to AM/PM format
+            function convertTo12HourFormat(time) {
+                const [hours, minutes] = time.split(":").map(Number);
+                const suffix = hours >= 12 ? "PM" : "AM";
+                const formattedHours = hours % 12 || 12;
+                return `${formattedHours}:${minutes < 10 ? "0" + minutes : minutes} ${suffix}`;
+            }
+        });
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,487 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Ensure full height for sticky footer */
+    margin: 0; /* Remove default browser margins */
+    display: flex;
+    flex-direction: column; /* Make the body a column layout */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #f8f9fa;
+    color: #003667;
+    line-height: 1.5;
+}
+
+/* Header Styling */
+header {
+    background-color: #e9ecef;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px; /* Adjust the height to fit your header */
+    width: auto; /* Maintain aspect ratio */
+    display: block; 
+}
+
+.logo {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Vertically center items */
+    gap: 10px; /* Add some space between the image and text */
+    font-weight: bold;
+    font-size: 1.5em; 
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 40px; /* Smaller height for mobile */
+    }
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+}
+
+.top-nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+/* Button Styling */
+button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    background-color:  #8FC3E9; /* #007bff; */
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+
+    
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.sign-in-btn, .register-btn {
+    background-color: #6c757d;
+}
+
+.sign-in-btn:hover, .register-btn:hover {
+    background-color: #5a6268;
+}
+
+
+/*checkbox copy paste*/
+.checkbox-wrapper-20 {
+    --slider-height: 8px;
+    --slider-width: calc(var(--slider-height) * 4);
+    --switch-height: calc(var(--slider-height) * 3);
+    --switch-width: var(--switch-height);
+    --switch-shift: var(--slider-height);
+    --transition: all 0.2s ease;
+
+    --switch-on-color: #ef0460;
+    --slider-on-color: #fc5d9b;
+
+    --switch-off-color: #eeeeee;
+    --slider-off-color: #c5c5c5;
+  }
+
+  .checkbox-wrapper-20 .switch {
+    display: block;
+  }
+    
+  .checkbox-wrapper-20 .switch .slider {
+    position: relative;
+    display: inline-block;
+    height: var(--slider-height);
+    width: var(--slider-width);
+    border-radius: var(--slider-height);
+    cursor: pointer;
+    background: var(--slider-off-color);
+    transition: var(--transition);
+  }
+  
+  .checkbox-wrapper-20 .switch .slider:after {
+    background: var(--switch-off-color);
+    position: absolute;
+    left: calc(-1 * var(--switch-shift));
+    top: calc((var(--slider-height) - var(--switch-height)) / 2);
+    display: block;
+    width: var(--switch-height);
+    height: var(--switch-width);
+    border-radius: 50%;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, .2);
+    content: '';
+    transition: var(--transition);
+  }
+    
+  .checkbox-wrapper-20 .switch label {
+    margin-right: 7px;
+  }
+    
+  .checkbox-wrapper-20 .switch .input {
+    display: none;
+  }
+      
+  .checkbox-wrapper-20 .switch .input ~ .label {
+    margin-left: var(--slider-height);
+  }
+         
+  .checkbox-wrapper-20 .switch .input:checked ~ .slider:after {
+    left: calc(var(--slider-width) - var(--switch-width) + var(--switch-shift));
+  }
+    
+  .checkbox-wrapper-20 .switch .input:checked ~ .slider {
+    background: var(--slider-on-color);
+  }
+
+  .checkbox-wrapper-20 .switch .input:checked ~ .slider:after {
+    background: var(--switch-on-color);
+  }
+
+
+
+/* Dashboard Layout */
+.dashboard-container {
+    display: flex;
+    margin: 20px;
+}
+
+.filters {
+    background-color: #dee2e6;
+    padding: 15px;
+    width: 20%;
+    border-radius: 8px;
+}
+
+.filters h3 {
+    margin-bottom: 15px;
+}
+
+.filters label {
+    display: block;
+    margin: 10px 0;
+} 
+
+
+.dashboard-content {
+    width: 75%;
+    margin-left: 20px;
+}
+
+.quick-action-menu,
+.calendar-view {
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.calendar-cell {
+    height: 100px;
+    background-color: #dee2e6;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ced4da;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #f8f9fa;
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #e0e0e0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+}
+
+.footer-links a,
+.footer-socials a {
+    margin: 0 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover,
+.footer-socials a:hover {
+    text-decoration: underline;
+}
+
+.footer-info p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive Footer Styling */
+@media (max-width: 768px) {
+    .checkbox-wrapper-20 {
+        margin-bottom: 10px;
+        width: 100%; /* Full width for smaller screens */
+    }
+    .checkbox-wrapper-20 .switch {
+        display: flex;
+        justify-content: space-between;
+    }
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-links a,
+    .footer-socials a {
+        display: block;
+        margin: 5px 0;
+    }
+
+}
+
+
+/* Main Content Area */
+.container {
+    flex: 1; /* Pushes the footer to the bottom */
+}
+
+/* Ambassador Availability Page */
+/* Toggle styling for the quick action area "edit availability" */
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.toggle-wrapper .switch .slider {
+    background: var(--slider-off-color);
+    transition: all 0.3s ease;
+}
+
+/* Manage Tours Page */
+.manage-tours-container {
+    margin: 20px;
+    padding: 20px;
+}
+
+.manage-tours-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.tour-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Available Ambassadors List */
+.ambassador-list {
+    width: 25%;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ambassador-list h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.ambassador-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.ambassador-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #dee2e6;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: grab;
+}
+
+.ambassador-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: #3d607f;
+}
+
+.ambassador-name {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Tour Slots Section */
+.tour-slots {
+    width: 70%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tour-slots h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.instruction {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    color: #6c757d;
+}
+
+/* Weekday Row */
+.weekday-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    width: 100%; /* Ensure it spans the full width */
+    overflow-x: auto; /* Optional: Allow horizontal scrolling if the content overflows */
+    /*flex-wrap: wrap;*/
+}
+
+.weekday-slot {
+    flex: 1 1 100px; /* Let the slots grow and shrink, with a min width of 100px */
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+
+.weekday-slot h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #3d607f;
+}
+
+/* Tours Container inside each weekday slot */
+.tours-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tour-slot {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tour-info {
+    font-size: 1rem;
+    color: #007bff;
+    margin-bottom: 5px;
+    font-weight: bold;
+    display: block;
+}
+
+.tour-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.tour-details {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.selected-tour {
+    border: 2px solid blue !important;  /* Blue border */
+    background-color: #f0f8ff !important; /* Light blue background (optional) */
+}
+
+/* Style for the availability grid container */
+.availability-grid {
+    display: flex; /* Use flexbox to arrange the boxes in a row */
+    flex-direction: column; /* Allow horizontal scrolling if there are too many boxes */
+    gap: 20px; /* Space between the boxes */
+    margin-top: 20px; /* Spacing from the heading */
+}
+
+
+/* Style for each ambassador block (box) */
+.ambassador-block {
+    border: 1px solid #ccc; /* Box border */
+    border-radius: 12px; /* Rounded corners */
+    padding: 16px; /* Padding inside the box */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for the ambassador blocks */
+.ambassador-block:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Style for ambassador names */
+.ambassador-block h2 {
+    font-size: 1.25rem; /* Slightly larger font size */
+    margin-bottom: 10px; /* Space below the name */
+    color: #333; /* Darker text color */
+}
+
+/* Style for availability list */
+.ambassador-block ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.ambassador-block li {
+    font-size: 1rem; /* Regular font size */
+    color: #555; /* Neutral text color */
+    margin-bottom: 5px; /* Space between list items */
+}

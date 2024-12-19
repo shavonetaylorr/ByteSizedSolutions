@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications | ScheduleMate</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="../static/assets/schedulemate-logo.png" alt="ScheduleMate Logo">
+            <p>ScheduleMate</p>
+        </div>
+        <nav class="top-nav">
+            <a href="../templates/dashboard.html">Dashboard</a>
+            <a href="../templates/manage-tours.html">Manage Tours</a>
+            <a href="../templates/AmbassadorAvailability.html">Ambassador Availability</a>
+            <a href="../templates/reports.html">Reports</a>
+            <a href="../templates/notifications.html" class="active">Notifications</a>
+            
+            <button class="sign-in-btn">
+                <a href="signin.html" style="color: white; text-decoration: none; "> Sign in </a>
+            </button>
+            <button class="register-btn">Register</button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Notifications Header -->
+            <div class="notifications-header">
+                <h2>Notifications</h2>
+                <div class="filter-controls">
+                    <button class="action-btn">Filter by Date</button>
+                    <button class="action-btn">Mark All as Read</button>
+                    <button class="action-btn">Clear All</button>
+                </div>
+            </div>
+
+            <!-- Notifications List -->
+            <div class="notifications-list">
+                <!-- Notification Item 1 -->
+                <div class="notification-box">
+                    <div class="notification-content">
+                        <h3 class="notification-title">New Tour Scheduled</h3>
+                        <p>Your tour "Campus Tour A" has been scheduled for November 30, 2024, at 10:00 AM.</p>
+                    </div>
+                    <div class="notification-actions">
+                        <button class="btn green-btn">Mark as Read</button>
+                        <button class="btn red-btn">Dismiss</button>
+                    </div>
+                </div>
+
+                <!-- Notification Item 2 -->
+                <div class="notification-box">
+                    <div class="notification-content">
+                        <h3 class="notification-title">Tour Reminder</h3>
+                        <p>Don't forget your tour tomorrow at 2:00 PM. Please arrive 10 minutes early.</p>
+                    </div>
+                    <div class="notification-actions">
+                        <button class="btn green-btn">Mark as Read</button>
+                        <button class="btn red-btn">Dismiss</button>
+                    </div>
+                </div>
+
+                <!-- Notification Item 3 -->
+                <div class="notification-box">
+                    <div class="notification-content">
+                        <h3 class="notification-title">Availability Update</h3>
+                        <p>One of the ambassadors has updated their availability for next week.</p>
+                    </div>
+                    <div class="notification-actions">
+                        <button class="btn green-btn">Mark as Read</button>
+                        <button class="btn red-btn">Dismiss</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>&copy; 2024 ScheduleMate. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-socials">
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
